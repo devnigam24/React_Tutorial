@@ -22,14 +22,17 @@
   width: 100%;
 }
 
-.App-footer h5 {
-  position: absolute;
-  left: 50%;
-  top: -50%;
-}
-
 .App-intro {
   font-size: large;
+}
+
+h5 {
+  font-size: 0.70em;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
