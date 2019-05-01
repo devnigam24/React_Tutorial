@@ -3,6 +3,7 @@ html {
   width: 100%;
 }
 body {
+  background-color: ghostwhite;
   display: flex;
   flex-direction: column;
   height: 100%;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import DashBoard from './components/dashboard';
+import './styles.css'
 
 export default class Application extends React.Component {
   render() {

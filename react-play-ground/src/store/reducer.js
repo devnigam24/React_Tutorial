@@ -9,6 +9,10 @@ const TEST_INITIAL_STATE = {
   testFlag: false
 };
 
+const USER_INITIAL_STATE = {
+  userName: 'Jhon'
+};
+
 const applicationReducer = (state = APPLICATION_INITIAL_STATE, action) => {
   switch(action.type) {
     case 'APPLICATION_INVOKED': {
@@ -28,8 +32,8 @@ const applicationReducer = (state = APPLICATION_INITIAL_STATE, action) => {
   }
 };
 
-const testReducer = (state = TEST_INITIAL_STATE, action) => {
-  switch(action.type) {
+const testReducer = (state = TEST_INITIAL_STATE, { type }) => {
+  switch(type) {
     case 'TOGGLE_TEST': {
       return { ...state, testFlag: !state.testFlag }
     }
@@ -40,9 +44,22 @@ const testReducer = (state = TEST_INITIAL_STATE, action) => {
   }
 };
 
+const userReducer = (state = USER_INITIAL_STATE, { type, payload }) => {
+  switch(type) {
+    case 'SET_USERNAME': {
+      return { ...state, userName: payload }
+    }
+  
+    default: {
+      return USER_INITIAL_STATE;
+    }
+  }
+};
+
 const rootReducer = combineReducers({
   application: applicationReducer,
-  test: testReducer
+  test: testReducer,
+  user: userReducer
 });
 
 export default rootReducer;
