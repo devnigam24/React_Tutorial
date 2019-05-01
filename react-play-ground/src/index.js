@@ -4,12 +4,22 @@ import * as serviceWorker from './serviceWorker';
 import Application from './application';
 import Header from './header';
 import Footer from './footer';
+import store from './store';
+import { applicationTimes } from './store/actions';
 
-ReactDOM.render(<Header />, document.getElementsByTagName('header')[0]);
-ReactDOM.render(<Application />, document.getElementsByTagName('mainBody')[0]);
-ReactDOM.render(<Footer />, document.getElementsByTagName('footer')[0]);
+store.dispatch(applicationTimes({
+  name: 'INITIALIZATION_START',
+  value: performance.now()
+}));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+ReactDOM.render(<Header store={store}/>, document.getElementsByTagName('header')[0]);
+ReactDOM.render(<Application store={store}/>, document.getElementsByTagName('mainBody')[0]);
+ReactDOM.render(<Footer store={store}/>, document.getElementsByTagName('footer')[0]);
+
+store.dispatch(applicationTimes({
+  name: 'INITIALIZATION_END',
+  value: performance.now()
+}));
+
 serviceWorker.unregister();
+window.mystore = store;
